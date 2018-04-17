@@ -51,3 +51,38 @@ a{
   color: #fff;
   text-decoration: none;
 }
+
+.contain{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-image: url(../images/fondo-blur.jpg);
+  background-size: cover;
+}
+
+.register p{
+  text-align: center;
+  margin-top: 5px;
+}
+
+.register{
+  width: 320px;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 8px #000000;
+  padding: 10px 55px 40px;
+}
+
+input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #95afc0;
+  background-color: rgba(0,0,0,0.0);
+  color: white;
+  padding: 12px 20px 2px 20px;
+  margin: 5px 0;
+}
