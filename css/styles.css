@@ -5,20 +5,47 @@
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+.beerportada{
+  float:left;
+  width: 30%;
+  height: 100vh;
+  background-image: url(../images/beeramarillorotado.png);
+  background-position:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
-.container{
+.textoportada{
+  width: 80%;
+  margin: 150px auto;
+}
 
+.textoportada p{
+  font-weight: bold;
+  margin-top: 40px;
+  font-size: 1.2em;
+  color: #000;
+}
+
+.containhome{
+  float: right;
   background-image: url(../images/background.jpg);
   background-size: cover;
   background-position: top;
-  width: 100vw;
+  width: 70%;
   height: 100vh;
-  margin: 0 auto;
 }
 
-.cont{
+.transparencia2{
+  background-color: rgba(86,87,88,0.1);
+  width: 100%;
+  height: 100vh;
+  float: left;
+}
+
+.transparencia{
   background-color: rgba(0,0,0,0.5);
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: relative;
 
