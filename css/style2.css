@@ -7,7 +7,9 @@
 }
 
 body {
-  background: #FF9000;
+  background-image:url(../images/fondo-login.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 h1 {
