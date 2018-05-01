@@ -8,13 +8,14 @@
   <body>
     <div class="contain">
         <div class="register">
-            <p>Registrate</p>
+            <a href="index.html"> <img src="./images/logo.png" alt=""></a>
             <p>¡Unite a la comunidad!</p>
-          <form class="form" action="index.html" method="post">
-
-              <input type="text" name="Nombre" placeholder="Nombre Usuario" value="">
-              <input type="email" name="email" placeholder="Email"value="">
-              <input type="password" name="password" placeholder="Contraseña" value="">
+            <form class="form" action="index.html" method="post">
+              <input type="text" name="Nombre" required placeholder="Usuario" value="">
+              <input type="email" name="email" required placeholder="Email"value="">
+              <input type="password" name="password" required placeholder="Contraseña" value="">
+              <input id="registro" type="submit" name="" value="REGISTRATE">
+              <a href="#"> <p>Ya tenes cuenta?</p></a>
           </form>
         </div>
     </div>

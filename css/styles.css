@@ -96,6 +96,11 @@
   background-color: #E3D555;
   border-radius: 5px;
 }
+
+.registrate:hover{
+  background-color: rgba(227,213,85,0.7)
+}
+
 .registrate a p{
   color: #000;
   font-weight: bold;
@@ -196,12 +201,44 @@ footer ul li a:hover{
   padding: 10px 55px 40px;
 }
 
-input {
+.form{
+  margin-top: 20%;
+}
+
+.register img {
+  margin-top: 5%;
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#registro{
+  font-weight: bold;
+  color: #000;
+  width: 50%;
+  background-color:#F5BE4F;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 25%;
+  margin-top: 20%;
+}
+#registro:hover{
+  box-shadow: 0px 5px 20px #000;
+}
+.contain .register .form input {
   width: 100%;
   border: none;
   border-bottom: 2px solid #95afc0;
   background-color: rgba(0,0,0,0.0);
   color: white;
   padding: 12px 20px 2px 20px;
-  margin: 5px 0;
+  margin: 10px 0;
+}
+
+.form a p{
+  font-size: 0.7em;
+  color: gray;
+  text-decoration: underline;
 }
