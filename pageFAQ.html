@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="./css/styles.css">
+    <meta charset="utf-8">
+    <title>Beers</title>
+    <div class="maintenance">
+              <a id="volveratras"href="index.html"> REGRESAR </a>
+    </div>
+
+  </head>
+  <body>
+
+
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+
+    <div class="pageFAQ">
+    <p>Hola! Bienvenido. Tenes preguntas o dudas? En esta seccion estan las preguntas frecuentes.</p>
+    <p>No encontraste lo que buscabas? Escribinos tu consulta y publicamos la respuesta en esta seccion.</p>
+    <p>Gracias por colaborar. Otro brindis!</p>
+    </div>
+    <div class="tab">
+          <input id="tab-one" type="checkbox" name="tabs">
+          <label for="tab-one">Porque me piden que loguee? Como recupero mi contrase&ntilde;a?</label>
+          <div class="tab-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
+          </div>
+        </div>
+        <div class="tab">
+          <input id="tab-two" type="checkbox" name="tabs">
+          <label for="tab-two">Puedo subir fotos y comentarios, hay moderacion previa o se publica automaticamente?</label>
+          <div class="tab-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
+          </div>
+        </div>
+        <div class="tab">
+          <input id="tab-three" type="checkbox" name="tabs">
+          <label for="tab-three">Hay algun costo por usar estar red social?</label>
+          <div class="tab-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
+          </div>
+        </div><br/><br/>
+
+
+
+        <div class="tab">
+              <input id="tab-two" type="checkbox" name="tabs">
+
+
+
+
+  </body>
+</html>
+
+  <?php
+/*
+este sector queda reservador para poder incluir codigo PHP
+Inspirado en....; )
+https://www.bloggerpasoapaso.com/2018/04/poner-spoiler-mostrar-ocultar-post-blogger.html
+
+*/
+
+?>
+
+
+
+<style>
+.pageFAQ{
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  width: 60%;
+  font-weight: bold;
+  background-color:#ffcc33;
+  color: #ffcc33;
+  overflow: hidden;
+
+}
+
+.tab {
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: 1px;
+  width: 60%;
+  color: #ffcc33;
+  overflow: hidden;
+}
+input{
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+label {
+  position: relative;
+  display: block;
+  padding: 0 0 0 1em;
+  background: #000000;
+  font-weight: bold;
+  line-height: 3;
+  cursor: pointer;
+}
+
+.tab-content {
+  max-height: 0;
+  overflow: hidden;
+  color:#000;
+  background: #fff;
+  -webkit-transition: max-height .35s;
+  -o-transition: max-height .35s;
+  transition: max-height .35s;
+}
+
+.tab-content p {
+  margin: 1em;
+  font-family: 'Source Sans Pro', sans-serif;
+  color:#000;
+}
+
+/* :checked */
+input:checked ~ .tab-content {
+  max-height: 10em;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Icon */
+label::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 3em;
+  height: 3em;
+  line-height: 3;
+  text-align: center;
+  -webkit-transition: all .35s;
+  -o-transition: all .35s;
+  transition: all .35s;
+}
+
+
+input[type=checkbox] + label::after {
+  content: "+";
+}
+
+input[type=radio] + label::after {
+  content: "\25BC";
+}
+
+input[type=checkbox]:checked + label::after {
+  transform: rotate(315deg);
+}
+
+input[type=radio]:checked + label::after {
+  transform: rotateX(180deg);
+}
+
+</style>
