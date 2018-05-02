@@ -4,11 +4,12 @@
     <link rel="stylesheet" href="./css/styles.css">
     <meta charset="utf-8">
     <title>Beers</title>
+    <div class="fondoFAQ">
+        <a id="volveratras"href="index.html"> REGRESAR </a>
+    </div>
 
   </head>
-  <body class="fondoFAQ">
-
-      <a id="volveratras"href="index.html"> REGRESAR </a>
+  <body>
     <br/><br/>
     <br/><br/>
     <br/><br/>
@@ -16,7 +17,6 @@
     <br/><br/>
     <br/><br/>
     <br/><br/>
-
     <div class="pageFAQ">
     <p>Hola! Bienvenido. Tenes preguntas o dudas? En esta seccion estan las preguntas frecuentes.</p>
     <p>No encontraste lo que buscabas? Escribinos tu consulta y publicamos la respuesta en esta seccion.</p>
@@ -59,38 +59,36 @@
         </div>
         <br/><br/>
 
-
-
         <div class="tab">
               <input id="tab-two" type="checkbox" name="tabs">
 
-
-
-
   </body>
 </html>
-
-  <?php
+<?php
 /*
 este sector queda reservador para poder incluir codigo PHP
 Inspirado en....; )
 https://www.bloggerpasoapaso.com/2018/04/poner-spoiler-mostrar-ocultar-post-blogger.html
-
 */
-
 ?>
 
-<style>
-/**
+<!--  CORTAR Y PEGAR DESDE ACA HASTA EL FINAL Y ELIMINAR LAS TAG <style></style>
  *  Stylos de pagina FAQ
  *
  * define el comportamiento y la apariencia del acordeon de las preguntas y respuestas
  * - pageFAQ text central de representacion
  * - tab este socalo donde luego se rodea la pregunta y tiene la crucecita
  * - tab-content texto de la respuesta
- * - transition quedo por default de la pagina que me traje, capaz se puede cambiar
-*/
-
+ * - transition quedo por default de la pagina que me traje, capaz se puede cambiar*/
+  /**  aca cuando se pasa a styles.css la url se cambia por url(../images/fondoFAQ.jpg) **/-->
+<style>
+.fondoFAQ{
+  position: absolute;
+  background-image: url(images/fondoFAQ.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
 .pageFAQ{
   position: relative;
   margin-left: 20px;
@@ -178,14 +176,6 @@ input[type=checkbox]:checked + label::after {
 
 input[type=radio]:checked + label::after {
   transform: rotateX(180deg);
-}
-
-.fondoFAQ{
-  position: absolute;
-  background-image: url(images/fondoFAQ.jpg);
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
 }
 
 </style>
