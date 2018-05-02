@@ -109,12 +109,12 @@ https://www.bloggerpasoapaso.com/2018/04/poner-spoiler-mostrar-ocultar-post-blog
   color: #ffcc33;
   overflow: hidden;
 }
-input{
+.tab input{
   position: absolute;
   opacity: 0;
   z-index: -1;
 }
-label {
+.tab label {
   position: relative;
   display: block;
   padding: 0 0 0 1em;
@@ -141,13 +141,13 @@ label {
 }
 
 /* :checked */
-input:checked ~ .tab-content {
+.tab input:checked ~ .tab-content {
   max-height: 10em;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
 /* Icon */
-label::after {
+.tab label::after {
   position: absolute;
   right: 0;
   top: 0;
@@ -162,15 +162,15 @@ label::after {
 }
 
 
-input[type=checkbox] + label::after {
+.tab input[type=checkbox] + label::after {
   content: "+";
 }
 
-input[type=radio] + label::after {
+.tab input[type=radio] + label::after {
   content: "\25BC";
 }
 
-input[type=checkbox]:checked + label::after {
+.tab input[type=checkbox]:checked + label::after {
   transform: rotate(315deg);
 }
 
