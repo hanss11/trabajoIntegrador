@@ -242,3 +242,147 @@ footer ul li a:hover{
   color: gray;
   text-decoration: underline;
 }
+
+/*  Stylos de pagina FAQ
+*
+* define el comportamiento y la apariencia del acordeon de las preguntas y respuestas
+* - pageFAQ text central de representacion
+* - tab este socalo donde luego se rodea la pregunta y tiene la crucecita
+* - tab-content texto de la respuesta
+* - transition quedo por default de la pagina que me traje, capaz se puede cambiar
+* - aca cuando se pasa a styles.css la url se cambia por url(../images/fondoFAQ.jpg) */
+.fondoFAQ{
+ position: absolute;
+ background-image: url(../images/fondoFAQ.jpg);
+ background-size: cover;
+ width: 100%;
+ height: 100vh;
+}
+.pageFAQ{
+ position: relative;
+ margin-left: 20px;
+ margin-bottom: 5px;
+ width: 60%;
+ font-weight: bold;
+ background-color:#ffcc33;
+ color: #ffcc33;
+ overflow: hidden;
+
+}
+
+.tab {
+ position: relative;
+ margin-left: 20px;
+ margin-bottom: 1px;
+ width: 60%;
+ color: #ffcc33;
+ overflow: hidden;
+}
+.tab input{
+ position: absolute;
+ opacity: 0;
+ z-index: -1;
+}
+.tab label {
+ position: relative;
+ display: block;
+ padding: 0 0 0 1em;
+ background: #000000;
+ font-weight: bold;
+ line-height: 3;
+ cursor: pointer;
+}
+
+.tab-content {
+ max-height: 0;
+ overflow: hidden;
+ color:#000;
+ background: #fff;
+ -webkit-transition: max-height .35s;
+ -o-transition: max-height .35s;
+ transition: max-height .35s;
+}
+
+.tab-content p {
+ margin: 1em;
+ font-family: 'Source Sans Pro', sans-serif;
+ color:#000;
+}
+
+/* :checked */
+.tab input:checked ~ .tab-content {
+ max-height: 10em;
+ font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Icon */
+.tab label::after {
+ position: absolute;
+ right: 0;
+ top: 0;
+ display: block;
+ width: 3em;
+ height: 3em;
+ line-height: 3;
+ text-align: center;
+ -webkit-transition: all .35s;
+ -o-transition: all .35s;
+ transition: all .35s;
+}
+
+
+.tab input[type=checkbox] + label::after {
+ content: "+";
+}
+
+.tab input[type=radio] + label::after {
+ content: "\25BC";
+}
+
+.tab input[type=checkbox]:checked + label::after {
+ transform: rotate(315deg);
+}
+
+.tab input[type=radio]:checked + label::after {
+ transform: rotateX(180deg);
+}
+
+/* Cuando el dispositivo es una tablet */
+@media (max-width: 768px){
+  .modulo{
+    margin-left: 50%;
+    transform: translateX(-40%);
+    height: 200px;
+  }
+  .entra{
+   margin-left:0%;
+   display: block;
+  }
+  .registrate{
+    display: block;
+    margin: 10px auto;
+  }
+}
+/* Cuando el dispositivo es un smarthphone */
+@media (max-width: 425px){
+  .modulo{
+    margin-left: 45%;
+  }
+   footer{
+     text-align: center;
+     width: 100vw;
+   }
+
+  footer ul{
+    margin: 0px;
+  }
+
+  footer ul li{
+    display: block;
+    padding: 10px;
+    width: 100vw;
+    margin: 0px;
+  }
+
+
+}
