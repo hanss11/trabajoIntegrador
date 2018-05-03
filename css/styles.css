@@ -386,3 +386,150 @@ footer ul li a:hover{
 
 
 }
+
+
+header {
+  height: 200px;
+}
+
+.contcab {
+   padding-left: 10px;
+   background-color: black;
+   padding-top: 2%;
+   padding-bottom: 0.5%;
+   overflow: hidden;
+
+
+}
+
+
+body {
+  background-image: url(https://raw.githubusercontent.com/hanss11/trabajoIntegrador/master/images/fondoFAQ.jpg);
+  margin: 0 0 ;
+  margin-top: -1.8%;
+
+
+}
+
+h1 {
+  display: inline-block;
+  color: white;
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 100;
+  padding-bottom: 0.5%;
+  font-size: 28px;
+  margin-top: 3%;
+  margin-left: 8.5%;
+}
+
+.navflo :hover {
+  background-color: #B18904;
+  color: black;
+
+
+}
+
+
+.contnav {
+  margin-left: 7.5%;
+  overflow: hidden;
+  font-family: Arial;
+  padding-top: 1.5%;
+
+}
+
+
+.contnav a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+  }
+
+
+  .submenu {
+    float: left;
+    overflow: hidden;
+  }
+
+
+  .submenu .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+
+
+
+
+  .contnav a:hover, .submenu:hover .dropbtn {
+    background-color: #FFBF00;
+    color: black;
+  }
+
+
+  .cont-submenu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 213px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+
+  .cont-submenu a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+
+  .cont-submenu2 a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+
+
+
+  .cont-submenu a:hover {
+    background-color: #ddd;
+  }
+
+  .cont-submenu2 a:hover {
+  background-color: #ddd;
+  }
+
+
+  .submenu:hover .cont-submenu {
+    display: block;
+  }
+
+.submenu:hover .cont-submenu2 {
+  display: block;
+}
+
+  .cont-submenu2 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 179px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
