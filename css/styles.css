@@ -260,7 +260,7 @@ footer ul li a:hover{
 }
 .pageFAQ{
  position: relative;
- margin-left: 20px;
+ margin-left: 120px;
  margin-bottom: 5px;
  width: 60%;
  font-weight: bold;
@@ -272,7 +272,7 @@ footer ul li a:hover{
 
 .tab {
  position: relative;
- margin-left: 20px;
+ margin-left: 120px;
  margin-bottom: 1px;
  width: 60%;
  color: #ffcc33;
