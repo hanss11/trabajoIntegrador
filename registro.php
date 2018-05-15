@@ -1,5 +1,7 @@
 #prohibido cristians y nicos!!!! FUERA DE NUESTRO CODIGO!
 
+#Advertencia: si usted se chorea este codigo recibira un muletaso. atte: el rey del ping pong
+
 <?php
 
 $errorName = $errorMail = $errorPass= $mail = $pass = $name = '';
