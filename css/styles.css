@@ -180,25 +180,27 @@ footer ul li a:hover{
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-image: url(../images/fondo-blur.jpg);
+  background-image: url(../images/BGregistro.jpg);
   background-size: cover;
 }
 
 .register p{
   text-align: center;
   margin-top: 5px;
+  color: #ccc;
 }
 
 .register{
   width: 320px;
-  height: 500px;
-  background-color: rgba(0, 0, 0, 0.7);
+  height: 550px;
+  background-color: #eee;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 4px 8px #000000;
   padding: 10px 55px 40px;
+  border-radius: 10px;
 }
 
 .form{
@@ -232,15 +234,22 @@ footer ul li a:hover{
   border: none;
   border-bottom: 2px solid #95afc0;
   background-color: rgba(0,0,0,0.0);
-  color: white;
+  color: black;
   padding: 12px 20px 2px 20px;
   margin: 10px 0;
 }
-
+#regAvatar{
+  border-bottom: none;
+}
 .form a p{
   font-size: 0.7em;
   color: gray;
   text-decoration: underline;
+}
+
+.errorstyle{
+  color: red;
+  font-size: 0.8em;
 }
 
 /*  Stylos de pagina FAQ

@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="login-form">
-     <a id="titulo" href="index.html"><h1>Beers</h1></a>
+     <a id="titulo" href="index.php"><h1>Beers</h1></a>
      <div class="form-group ">
        <input type="text" class="form-control" placeholder="Usuario " id="UserName">
        <i class="fa fa-user"></i>
