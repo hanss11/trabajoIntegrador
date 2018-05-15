@@ -32,20 +32,20 @@
             </div>
               <div class="modulo">
                 <div class="entra">
-                  <a id="entra" href="Login.html"><p>ENTRAR</p></a>
+                  <a id="entra" href="Login.php"><p>ENTRAR</p></a>
                 </div>
                 <div class="registrate">
-                  <a id="registrate" href="registro.html"><p>REGISTRATE AHORA!</p></a>
+                  <a id="registrate" href="registro.php"><p>REGISTRATE AHORA!</p></a>
                 </div>
               </div>
 
             <footer>
               <hr>
               <ul>
-                <li> <a href="mantenimiento.html">¿QUE ES BEERS?</a> </li>
-                <li> <a href="pageFAQ.html">FAQ</a> </li>
-                <li> <a href="mantenimiento.html">NOSOTROS</a> </li>
-                <li> <a href="mantenimiento.html">POLITICAS DE PRIVACIDAD</a> </li>
+                <li> <a href="mantenimiento.php">¿QUE ES BEERS?</a> </li>
+                <li> <a href="pageFAQ.php">FAQ</a> </li>
+                <li> <a href="mantenimiento.php">NOSOTROS</a> </li>
+                <li> <a href="mantenimiento.php">POLITICAS DE PRIVACIDAD</a> </li>
               </ul>
             </footer>
         </div>
