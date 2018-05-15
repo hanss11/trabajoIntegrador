@@ -102,7 +102,7 @@ if (verificaMail($mail) != true && empty($countError)){
             <a href="index.php"> <img src="./images/logo.png" alt=""></a>
             <p>¡Unite a la comunidad!</p>
             <form class="form" action="registro.php" method="post" enctype="multipart/form-data">
-              <input type="text" name="name"  placeholder="Usuario" value="<?php echo $name; ?>"> <span class="errorstyle"> <?php  echo $errorName; ?></span>
+              <input type="text" name="name" autofocus placeholder="Usuario" value="<?php echo $name; ?>"> <span class="errorstyle"> <?php  echo $errorName; ?></span>
               <input type="email" name="mail"  placeholder="Email" value="<?php echo $mail; ?>"> <span class="errorstyle"> <?php echo $errorMail; ?></span>
               <input type="password" name="pass"  placeholder="Contraseña" value="<?php echo $pass; ?>"> <span class="errorstyle"> <?php echo $errorPass; ?></span>
               <label> <p>Foto de perfil</p> <input id="regAvatar" type="file" name="avatar" value=""></label>
