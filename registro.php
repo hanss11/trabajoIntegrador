@@ -1,3 +1,5 @@
+#prohibido cristians y nicos!!!! FUERA DE NUESTRO CODIGO!
+
 <?php
 
 $errorName = $errorMail = $errorPass= $mail = $pass = $name = '';
