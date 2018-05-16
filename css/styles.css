@@ -356,6 +356,85 @@ footer ul li a:hover{
  transform: rotateX(180deg);
 }
 
+
+/*Styles para sticky head */
+.BGHomepage{
+  background-color: #FFFFFF;
+}
+.stickyBar{
+    backface-visibility: hidden;
+    border-bottom: 1px solid #141d26;
+    border-bottom: 1px solid rgba(105, 22, 22, 0.05);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.globalNav{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  height: 34px;
+  position: relative;
+  width: 100%;
+}
+
+.navContain{
+  height: 100%;
+  max-width: 890px;
+  text-align: center;
+  width: auto;
+  margin: 0 auto;
+  position: relative;
+}
+/* posibles colores
+  rgb(247, 210, 75)
+  rgb(244, 198, 75)
+  rgb(242, 188, 77)
+  rgb(238, 175, 75)
+ */
+.colorNav{
+  background: #7D7D7D;
+  height: 50px;
+}
+
+.NavigationBar{
+  float: left;
+  display: inline-block;
+}
+.ulNavBar{
+  text-align: left;
+  float: left;
+  list-style: none;
+}
+.liNavBar{
+  height: 50px;
+  overflow: hidden;
+}
+
+.ulNavBar li a{
+display: block;
+font-size: 13px;
+font-weight: bold;
+height: 46px;
+line-height: 1;
+padding: 0 14px 0 4px;
+}
+.ulNavBar li{
+  float: left;
+}
+.textnav{
+float: left;
+margin-left: 3px;
+margin-top: 17px;
+padding: 0;
+}
+
+.newpage{
+  padding: 80px 14px 15px;
+  position: relative;
+}
+
 /* Cuando el dispositivo es una tablet */
 @media (max-width: 768px){
   .modulo{
