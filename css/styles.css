@@ -358,6 +358,7 @@ footer ul li a:hover{
 
 
 /*Styles para sticky head */
+
 .BGHomepage{
   background-color: #FFFFFF;
 }
@@ -394,13 +395,36 @@ footer ul li a:hover{
   rgb(238, 175, 75)
  */
 .colorNav{
-  background: #7D7D7D;
+  background: #293133;
   height: 50px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+.ProfilePhoto{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  float: left;
+  margin-top: 5px;
+}
+.flecha{
+  color: #fff;
+  float: left;
+  margin: 19px 8px;
+
+  font-size: 13px;
+}
+
+.noti{
+    color: #fff;
+    font-size: 20px;
+    margin: 15px 10px;
 }
 
 .NavigationBar{
   float: left;
   display: inline-block;
+  margin-left: 25px;
 }
 .ulNavBar{
   text-align: left;
@@ -430,11 +454,82 @@ margin-top: 17px;
 padding: 0;
 }
 
-.newpage{
-  padding: 80px 14px 15px;
+.liNavBar:hover{
+  border-bottom: 2px solid #77C161;
+}
+.boxsearch{
+  float: right;
+  margin-top: 8px;
+  margin-left: 8px;
   position: relative;
 }
+.container-1{
+  width: 180px;
+  vertical-align: middle;
+  position: relative;
+}
+.container-1 .busca{
+  position: absolute;
+  top: 50%;
+  left: 1px;
+  margin-left: 15px;
+  margin-top: 9px;
+  z-index: 1;
+  color: #95989A;
+}
+.container-1 input#search{
+  width: 180px;
+  height: 35px;
+  background: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 10pt;
+  float: left;
+  color: #B1B3B5;
+  padding-left: 43px;
+  padding-right: 10px;
+  padding-top: 4px;
+}
+.container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
+    outline:none;
+    background: #B8C7CC;
+    color: #fff;
+  }
+.newpost{
+  float: right;
+  height: 30px;
+  width: 120px;
+  border-radius: 20px;
+  background-color: #77C161;
+  margin-top: 11px;
+}
+.newpost a{
+  margin-right:10px;
+}
+.mas{
+  font-size: 15px;
+  margin: 8px 8px 0px 8px;
+}
 
+
+.page{
+  padding: 80px 14px 15px;
+  position: relative;
+  background-color: #384244;
+}
+.homecontent{
+  height: 100vh;
+  width: 55%;
+  margin: 5% 0px 0px 5%;
+}
+.card{
+  height: 300px;
+  width: 100%;
+  border-radius: 3px;
+  background-color: #fff;
+  margin-top: 5px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+}
 /* Cuando el dispositivo es una tablet */
 @media (max-width: 768px){
   .modulo{
