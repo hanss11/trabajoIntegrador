@@ -1,3 +1,38 @@
+<?php
+require_once('funciones.php');
+
+$errorUser = $errorPass = $user = $pass = '';
+
+if($_POST) {
+   $user=trim($_POST['user']);
+   $pass=trim($_POST['pass']);
+
+$countError=[];
+if($user=='') {
+   $errorUser='Debe ingresar su usuario'
+   #$countError[]= 'error';
+ }elseif (verificaUser($user)) {
+   $errorUser='Usuario incorrecto'
+ }
+
+
+if($pass=='') {
+   $errorPass='Debe ingresar su contraseña'
+   #$countError[]= 'error';
+}elseif (verificaPassword($pass)) {
+   $errorPass='Contraseña incorrecta'
+}
+
+}
+
+
+ ?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -8,14 +43,16 @@
       <link rel="stylesheet" href="./css/style2.css">
 </head>
 <body>
+  <form class="" action="#" method="post">
+
   <div class="login-form">
      <a id="titulo" href="index.php"><h1>Beers</h1></a>
      <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Usuario " id="UserName">
+       <input type="text" class="form-control" placeholder="Usuario " id="UserName" value="<?php echo $user; ?>"><span class="errorstyle" <?php echo $errorUser ?>></span>
        <i class="fa fa-user"></i>
      </div>
      <div class="form-group log-status">
-       <input type="password" class="form-control" placeholder="Contraseña" id="Passwod">
+       <input type="password" class="form-control" placeholder="Contraseña" id="Passwod" value="<?php echo $pass; ?>"><span class="errorstyle" <?php echo $errorPass ?>></span>
        <i class="fa fa-lock"></i>
      </div>
       <span class="alert">Hey! Bebiste demasiado ; )</span>
@@ -30,7 +67,7 @@
     <script  src="js/index.js"></script>-->
 
 
-
+ </form>
 </body>
 
 </html>

@@ -44,4 +44,34 @@ function guardaPerfil($imagen){
         }
     }
 }
+
+
+
+#Verifica si el usuario es correcto.
+
+function verificaUser($user){
+  $todos = decode();
+   foreach ($todos as $Usuario) {
+     if ($Usuario['UserName'] == $user) {
+         return $Usuario;
+     }
+    }
+   return false;
+}
+
+
+#Verifica si la contraseña es correcta.
+function verificaPassword($pass){
+  $todos = decode();
+   foreach ($todos as $Usuario) {
+     if ($Usuario['Passwod'] == $pass) {
+         return $Usuario;
+     }
+    }
+   return false;
+}
+
+
+
+
  ?>
