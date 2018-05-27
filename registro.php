@@ -44,6 +44,7 @@ if (verificaMail($mail) != true && empty($countError)){
   $json=json_encode($array);
   $archivo='datauser.txt';
   file_put_contents($archivo, $json. PHP_EOL, FILE_APPEND);
+  header('Location: homepage.php');
 }
 
 

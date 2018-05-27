@@ -48,11 +48,11 @@ if($pass=='') {
   <div class="login-form">
      <a id="titulo" href="index.php"><h1>Beers</h1></a>
      <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Usuario " id="UserName" value="<?php echo $user; ?>"><span class="errorstyle" <?php echo $errorUser ?>></span>
+       <input type="text" name="user" class="form-control" placeholder="Usuario " id="UserName" value="<?php echo $user; ?>"><span class="errorstyle" <?php echo $errorUser ?>></span>
        <i class="fa fa-user"></i>
      </div>
      <div class="form-group log-status">
-       <input type="password" class="form-control" placeholder="Contraseña" id="Passwod" value="<?php echo $pass; ?>"><span class="errorstyle" <?php echo $errorPass ?>></span>
+       <input type="password" name="pass" class="form-control" placeholder="Contraseña" id="Passwod" value="<?php echo $pass; ?>"><span class="errorstyle" <?php echo $errorPass ?>></span>
        <i class="fa fa-lock"></i>
      </div>
       <span class="alert">Hey! Bebiste demasiado ; )</span>
