@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 require_once('funciones.php');
 echo '<br><br><br><br><br><br><br>';
 
@@ -27,8 +27,8 @@ var_dump($_SESSION);
               <i class="flecha fas fa-angle-down"></i>
               <div class="NavigationBar">
                 <ul class="ulNavBar">
-                  <li><i class="noti fas fa-envelope"></i></li>
-                  <li><i class="noti fas fa-bell"></i></li>
+                  <li class="notice"> <a href="#"> <i class="noti fas fa-envelope"></i></a></li>
+                  <li class="notice"> <a href="#"> <i class="noti fas fa-bell"></i></a> </li>
                 </ul>
               </div>
 

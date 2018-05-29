@@ -21,10 +21,13 @@ if($_POST) {
    if (($countError)==0 && ($usuario = verificaCredenciales($user,$pass))) {
      echo "Listo! ";
      loguear($usuario);
-     var_dump($usuario);
+     header('Location:homepage.php');
+      exit;
+  /*   var_dump($usuario);
      echo '<br>';
-  //   var_dump($countError);
+     var_dump($countError);
      var_dump($_SESSION);
+  */
    }
 }
 /*
@@ -56,12 +59,15 @@ var_dump($countError);
 
   <div class="login-form">
      <a id="titulo" href="index.php"><h1>Beers</h1></a>
+      <span id="errors"> <?php  echo $errorUser; ?></span>
      <div class="form-group ">
-       <input type="text" name="user" class="form-control" placeholder="Usuario " id="UserName" value="<?php echo $user; ?>"><span class="errorstyle" <?php echo $errorUser; ?>></span>
+
+       <input type="text" name="user" class="form-control" placeholder="Usuario " id="UserName" value="<?php echo $user; ?>">
        <i class="fa fa-user"></i>
      </div>
+      <span class="errorstyle"> <?php echo $errorPass; ?></span>
      <div class="form-group log-status">
-       <input type="password" name="pass" class="form-control" placeholder="Contraseña" id="Passwod" value="<?php echo $pass; ?>"><span class="errorstyle" <?php echo $errorPass; ?>></span>
+       <input type="password" name="pass" class="form-control" placeholder="Contraseña" id="Passwod" value="<?php echo $pass; ?>">
        <i class="fa fa-lock"></i>
      </div>
       <span class="alert">Hey! Bebiste demasiado ; )</span>
