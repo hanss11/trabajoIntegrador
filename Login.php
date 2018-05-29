@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('funciones.php');
 
 $errorUser = $errorPass = $user = $pass = '';
@@ -7,25 +8,33 @@ if($_POST) {
    $user=trim($_POST['user']);
    $pass=trim($_POST['pass']);
 
-$countError=[];
-if($user=='') {
-   $errorUser='Debe ingresar su usuario'
-   #$countError[]= 'error';
- }elseif (verificaUser($user)) {
-   $errorUser='Usuario incorrecto'
- }
+  $countError=0;
+  if($user=='') {
+     $errorUser='Debe ingresar su usuario';
+     $countError++;
+   }
 
-
-if($pass=='') {
-   $errorPass='Debe ingresar su contraseña'
-   #$countError[]= 'error';
-}elseif (verificaPassword($pass)) {
-   $errorPass='Contraseña incorrecta'
+  if($pass=='') {
+     $errorPass='Debe ingresar su contraseña';
+     $countError++;
+  }
+   if (($countError)==0 && ($usuario = verificaCredenciales($user,$pass))) {
+     echo "Listo! ";
+     loguear($usuario);
+     var_dump($usuario);
+     echo '<br>';
+  //   var_dump($countError);
+     var_dump($_SESSION);
+   }
 }
-
-}
-
-
+/*
+var_dump($user);
+var_dump($pass);
+var_dump($errorUser);
+var_dump($errorPass);
+echo 'count errororo please!';
+var_dump($countError);
+//var_dump($usuario);*/
  ?>
 
 
@@ -48,17 +57,17 @@ if($pass=='') {
   <div class="login-form">
      <a id="titulo" href="index.php"><h1>Beers</h1></a>
      <div class="form-group ">
-       <input type="text" name="user" class="form-control" placeholder="Usuario " id="UserName" value="<?php echo $user; ?>"><span class="errorstyle" <?php echo $errorUser ?>></span>
+       <input type="text" name="user" class="form-control" placeholder="Usuario " id="UserName" value="<?php echo $user; ?>"><span class="errorstyle" <?php echo $errorUser; ?>></span>
        <i class="fa fa-user"></i>
      </div>
      <div class="form-group log-status">
-       <input type="password" name="pass" class="form-control" placeholder="Contraseña" id="Passwod" value="<?php echo $pass; ?>"><span class="errorstyle" <?php echo $errorPass ?>></span>
+       <input type="password" name="pass" class="form-control" placeholder="Contraseña" id="Passwod" value="<?php echo $pass; ?>"><span class="errorstyle" <?php echo $errorPass; ?>></span>
        <i class="fa fa-lock"></i>
      </div>
       <span class="alert">Hey! Bebiste demasiado ; )</span>
       <label class="conect" ><input  type="checkbox" name="Conectado" value="conectado"> <p>Mantener Conectado</p></label>
       <a class="link" href="#">Olvidaste Tu contraseña?</a>
-     <button type="button" class="log-btn" >Entrar</button>
+     <button type="submit" class="log-btn" >Entrar</button>
 
    </div>
 
