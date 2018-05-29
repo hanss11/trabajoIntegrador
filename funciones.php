@@ -84,7 +84,12 @@ function verificaCredenciales($user, $pass){
 
 function loguear($user){
     $_SESSION['ID'] = $user['ID'];
+    $_SESSION['name'] = $user['name'];
+    $_SESSION['profile']  = $user['profile'];
 }
 
+function estaLogueado(){
+  return isset ($_SESSION['ID']) ;
 
+}
  ?>

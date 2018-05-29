@@ -1,3 +1,12 @@
+<?php
+session_start(); 
+require_once('funciones.php');
+echo '<br><br><br><br><br><br><br>';
+
+var_dump($_SESSION);
+
+
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
