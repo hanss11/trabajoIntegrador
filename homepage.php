@@ -1,11 +1,16 @@
 <?php
 session_start();
 require_once('funciones.php');
-echo '<br><br><br><br><br><br><br>';
+
+if (!estaLogueado()) {
+    header('location:login.php');
+    exit;
+}
+/*echo '<br><br><br><br><br><br><br>';
 
 var_dump($_SESSION);
 
-
+*/
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -17,43 +22,7 @@ var_dump($_SESSION);
   </head>
 
   <body>
-    <div class="BGHomepage">
-      <div class="stickyBar">
-      <div class="globalNav">
-        <div class="colorNav">
-          <div class="navContain">
-              <div class="ProfilePhoto">
-              </div>
-              <i class="flecha fas fa-angle-down"></i>
-              <div class="NavigationBar">
-                <ul class="ulNavBar">
-                  <li class="notice"> <a href="#"> <i class="noti fas fa-envelope"></i></a></li>
-                  <li class="notice"> <a href="#"> <i class="noti fas fa-bell"></i></a> </li>
-                </ul>
-              </div>
-
-
-              <div class="NavigationBar">
-                <ul class="ulNavBar">
-                  <li class="liNavBar"> <a href=""><span class="textnav"> HOME</span> </a> </li>
-                  <li class="liNavBar"> <a href="#"> <span class="textnav"> MOMENTS</span> </a> </li>
-                </ul>
-              </div>
-
-              <div class="boxsearch">
-                <div class="container-1">
-                  <span class="busca" ><i class="fas fa-search"></i></span>
-                  <input type="search" id="search" placeholder="Buscar" />
-                </div>
-              </div>
-
-              <div class="newpost">
-                <a href="#"><i class="mas fas fa-plus"></i><span>NEW</span> </a>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<?php include('header.php') ?>
     <div class="page">
       <div class="homecontent">
         <div class="card"></div>
@@ -63,6 +32,6 @@ var_dump($_SESSION);
       </div>
 
     </div>
-    </div>
+
   </body>
 </html>

@@ -403,21 +403,46 @@ footer ul li a:hover{
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #293133;
   float: left;
-  margin-top: 5px;
+  margin-top: 6px;
+}
+.ProfilePhoto img{
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
 }
 .flecha{
   color: #fff;
   float: left;
   margin: 19px 8px;
   font-size: 13px;
+
+}
+.dropdown p a{
+  color: black;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    top: 30px;
+    z-index: 1;
+}
+.dropdown-content p{
+  padding-top: 10px;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 .noti{
     color: #fff;
     font-size: 20px;
-    margin: 15px 10px;
+    margin: 15px 5px;
 }
 
 .noti:hover{
@@ -428,6 +453,11 @@ footer ul li a:hover{
   float: left;
   display: inline-block;
   margin-left: 25px;
+}
+.CenterUser{
+  float: left;
+  margin: 1.5% 10%;
+  color: #fff;
 }
 .ulNavBar{
   text-align: left;
@@ -514,11 +544,11 @@ padding: 0;
   margin: 8px 8px 0px 8px;
 }
 
-
 .page{
   padding: 80px 14px 15px;
   position: relative;
   background-color: #384244;
+  min-height: 1500px;
 }
 .homecontent{
   height: 100vh;
@@ -533,6 +563,73 @@ padding: 0;
   margin-top: 5px;
   box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
 }
+  /* Styles para profile */
+
+.profilecard{
+  width: 96%;
+  height: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+  position: relative;
+}
+.profileportada{
+  width: 100%;
+  height: 30%;
+}
+.profileportada span{
+  position: absolute;
+  font-size: 2em;
+  font-weight: bolder;
+  top: 23%;
+  left: 50%;
+  transform: translateX(-40%);
+}
+.cardAvatar{
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+.imageprofilecard img{
+ width: 100%;
+ height: 260px;
+}
+
+.interactiveProfile{
+  width: 90%;
+  text-align: center;
+  margin: 20px auto;
+}
+.interactiveProfile a{
+  display: inline-block;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+.interactiveProfile a span{
+color: black;
+font-weight: bolder;
+}
+
+.friend{
+  color: #77C161;
+  font-size: 1.5em;
+}
+
+.star{
+  color: #ffe31f;
+  font-size: 1.5em;
+}
+
+.heart{
+  color: #CE181F;
+  font-size: 1.5em;
+}
+
+
+
 /* Cuando el dispositivo es una tablet */
 @media (max-width: 768px){
   .modulo{

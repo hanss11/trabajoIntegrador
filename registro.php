@@ -3,7 +3,12 @@
 #Advertencia: si usted se chorea este codigo recibira un muletaso. atte: el rey del ping pong
 
 <?php
+session_start();
 require_once('funciones.php');
+if (estaLogueado()) {
+    header('location:homepage.php');
+    exit;
+}
 
 $errorName = $errorMail = $errorPass= $mail = $pass = $name = '';
 

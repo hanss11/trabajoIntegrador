@@ -2,7 +2,12 @@
 session_start();
 require_once('funciones.php');
 
-$errorUser = $errorPass = $user = $pass = '';
+if (estaLogueado()) {
+    header('location:homepage.php');
+    exit;
+}
+
+$errorUser = $errorPass = $user = $pass = $noValido = '';
 
 if($_POST) {
    $user=trim($_POST['user']);
@@ -21,6 +26,10 @@ if($_POST) {
    if (($countError)==0 && ($usuario = verificaCredenciales($user,$pass))) {
      echo "Listo! ";
      loguear($usuario);
+     if ($_POST['conectado']) {
+           setcookie('id', $usuario['id'], time() + 3600 );
+       }
+
      header('Location:homepage.php');
       exit;
   /*   var_dump($usuario);
@@ -28,7 +37,9 @@ if($_POST) {
      var_dump($countError);
      var_dump($_SESSION);
   */
-   }
+} elseif(($countError)==0 && (verificaCredenciales($user,$pass) == false)){
+          $noValido = 'El correo electrónico y la contraseña que ingresaste no coinciden con nuestros registros. Por favor, revisa e inténtalo de nuevo.';
+      }
 }
 /*
 var_dump($user);
@@ -59,7 +70,7 @@ var_dump($countError);
 
   <div class="login-form">
      <a id="titulo" href="index.php"><h1>Beers</h1></a>
-      <span id="errors"> <?php  echo $errorUser; ?></span>
+      <span class="errorstyle"> <?php  echo $errorUser; ?></span>
      <div class="form-group ">
 
        <input type="text" name="user" class="form-control" placeholder="Usuario " id="UserName" value="<?php echo $user; ?>">
@@ -67,13 +78,15 @@ var_dump($countError);
      </div>
       <span class="errorstyle"> <?php echo $errorPass; ?></span>
      <div class="form-group log-status">
-       <input type="password" name="pass" class="form-control" placeholder="Contraseña" id="Passwod" value="<?php echo $pass; ?>">
+       <input type="password" name="pass" class="form-control" placeholder="Contraseña" id="Passwod" value="">
        <i class="fa fa-lock"></i>
      </div>
       <span class="alert">Hey! Bebiste demasiado ; )</span>
       <label class="conect" ><input  type="checkbox" name="Conectado" value="conectado"> <p>Mantener Conectado</p></label>
       <a class="link" href="#">Olvidaste Tu contraseña?</a>
      <button type="submit" class="log-btn" >Entrar</button>
+
+     <span class="errorstyle"> <?php echo $noValido; ?> </span>
 
    </div>
 
