@@ -33,7 +33,7 @@ var_dump($_SESSION);
             <img src="./images/newyork.jpg" alt="">
           </div>
           <div class="cardAvatar">
-            <img src="<?php echo './'. $_SESSION['profile']; ?>" alt="">
+            <img id="tamaño" src="<?php echo './'. $_SESSION['profile']; ?>" alt="">
           </div>
           <span>  <?php echo ucwords($_SESSION['name']); ?> </span>
         </div>
