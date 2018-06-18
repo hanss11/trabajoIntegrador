@@ -92,4 +92,45 @@ function estaLogueado(){
   return isset ($_SESSION['ID']) ;
 
 }
+
+function conectar(){
+$dsn = 'mysql:dbname=MySQL;host=127.0.0.1';
+$UserDB = 'root';
+$PassDB = '';
+
+try {
+    $gbd = new PDO($dsn, $UserDB, $PassDB);
+    echo "entre en try, me conecte al MySql Local   ";
+} catch (PDOException $e) {
+    echo 'Falló la conexión: ' . $e->getMessage();
+}
+
+$gsent = $gbd->prepare("insert into proyecto.usuarios values ('1','asda','123@gmail.com','asda','1','1');");
+$gsent->execute();
+$results=$gsent->(PDO::FETCH_ASSOC);
+echo "esto es gsent -->";
+var_dump ($gsent);
+$row= $gsent->rowcount();
+echo "esto es row -->";
+var_dump ($row);
+echo "esto es results -->";
+var_dump ($results);
+//echo "esto es gbd -->";
+//var_dump ($gbd);
+//echo "esto es gsent -->";
+//var_dump ($gsent);
+
+}
+
+function altaUser(){
+//   conectar($gbd);
+
+//   $gsent = $gbd->prepare("insert into proyecto.usuarios values ('2','asda','123@gmail.com','asda','1','1');");
+//   $gsent->execute();
+
+///   $row= $gsent->rowcount();
+//   echo "esto es row -->";
+///   var_dump ($row);
+
+}
  ?>
