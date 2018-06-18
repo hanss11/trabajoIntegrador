@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once('funciones.php');
+require_once('conexion.php');
+conectar() ; 
 
 if (estaLogueado()) {
     header('location:homepage.php');
