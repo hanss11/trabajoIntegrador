@@ -58,6 +58,9 @@ try {
     echo 'Falló la conexión: ' . $e->getMessage();
 }
 
+ $gsent = $gbd->prepare("DROP DATABASE IF EXISTS proyecto;");
+ $gsent->execute();
+
  $gsent = $gbd->prepare("CREATE DATABASE IF NOT EXISTS proyecto;");
  $gsent->execute();
 
