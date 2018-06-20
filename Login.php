@@ -5,7 +5,6 @@ session_start();
 require_once('funciones.php');
 
 
-conectar();
 
 if (estaLogueado()) {
     header('location:homepage.php');

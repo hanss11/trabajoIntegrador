@@ -1,8 +1,7 @@
-#prohibido cristians y nicos!!!! FUERA DE NUESTRO CODIGO!
-
-#Advertencia: si usted se chorea este codigo recibira un muletaso. atte: el rey del ping pong
-
 <?php
+/* Ojo! la funcion guardarUsuario no tiene que estar dentro de la misma pagina*/
+/* Ojo! sino tiene que estar en la clase que le corresponda*/
+
 session_start();
 require_once('funciones.php');
 if (estaLogueado()) {
@@ -33,7 +32,6 @@ if($_POST) {
      $countError[] = 'error';
    }
 
-
    #crea usuario
    $array=[
      'name' => $name,
@@ -42,59 +40,36 @@ if($_POST) {
      'ID' => ID(),
      "profile" => 'img/' . $mail. '.' . pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION)
    ];
-#si el contador de errores es 0 y el mail no se encuentra en la base de datos
-#se procedera a escribir en el JSON la informacion del usuario
+
 if (verificaMail($mail) != true && empty($countError)){
   guardaperfil('avatar');
   $json=json_encode($array);
   $archivo='datauser.txt';
   file_put_contents($archivo, $json. PHP_EOL, FILE_APPEND);
   header('Location: homepage.php');
+/* insert en base de datos porque los datos estan Ok*/
+/* parte nueva insert en base de datos llamo a la funcion guardarUsuario*/
+/* ojo! datos duplicados ver como se hace esto mejor*/
+$name1=trim($_POST['name']);
+$pass1=trim($_POST['pass']);
+$mail1=trim($_POST['mail']);
+$avatar1= 'img/' . $mail. '.' . pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION);
+/*
+echo "<br><br><br><br>";
+echo "  name-->",$name1;
+echo "  email-->",$mail1;
+echo "  pass-->",$pass1;
+echo "  avatar1-->",$avatar1;
+echo "<br><br><br><br>";
+echo "  post -->";
+var_dump($_POST);*/
+//echo "avatar",$avatar1;
+guardarUsuario ($name1,$mail1,$pass1,$avatar1);
 }
 
-
-
-
-
-// if($_FILES[$archivo]['error'] !=UPLOAD_ERR_OKK) { $arrayADevolver['avatar'] ="Necesita subir una foto"; } //
-// if
-// $ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION); //
-// $dondeEstoyParado = dirname(__FILE__);
-// $rutaFinalConNombre = $dondeEstoyParado. '/img/'. $_POST['email']. '.'. $ext; //
-// move_uploaded_file($archivoFisico, $rutaFinalConNombre); //
-//EXISTE MAIL//
-  //function existeMail($mail) {
-  //$todos = traerTodos();//
-  //foreach($todos as $unUsuario){
-   //if($unUsuario)......//
-//}
-//TRAER TODOS//
-  //$todosJSON = file_get_contents('usuarios.json')
-  //$usuarioArray = explode(PHP_EOL, $tdosJSON)//
-  //$todosPHP=[];
-  //foreach($usuariosARRay as $unUsuario) {
-    //$todosPHP[] = json_decode($unUsuario, true);
-  //}
-  //retur $todosPHP;//
-  //
-  //TRAER ULTIMO ID//
-  //function traerUltimolID() {
-  //$todos = traerTdoso();
-  //if (count($todos) == 0) {
-  //  return 1;
-  //}
-  //$ultuimoUsuario = array_pop($todos;);
-  //$ultimoID = $ultimoUsuario['id'];
-  //return $ultimoID +1;
-//}
-
-#crea usuario
-
 }
- ?>
-
+?>
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="./css/styles.css">
@@ -107,7 +82,7 @@ if (verificaMail($mail) != true && empty($countError)){
         <div class="register">
             <a href="index.php"> <img src="./images/logo.png" alt=""></a>
             <p>¡Unite a la comunidad!</p>
-            <form class="form" action="registro.php" method="post" enctype="multipart/form-data">
+            <form class="form" action="registro2.php" method="POST" enctype="multipart/form-data">
               <input type="text" name="name" autofocus placeholder="Usuario" value="<?php echo $name; ?>"> <span class="errorstyle"> <?php  echo $errorName; ?></span>
               <input type="email" name="mail"  placeholder="Email" value="<?php echo $mail; ?>"> <span class="errorstyle"> <?php echo $errorMail; ?></span>
               <input type="password" name="pass"  placeholder="Contraseña" value="<?php echo $pass; ?>"> <span class="errorstyle"> <?php echo $errorPass; ?></span>
@@ -120,3 +95,32 @@ if (verificaMail($mail) != true && empty($countError)){
     </div>
   </body>
 </html>
+<?php
+/* Conectar a una base de datos de MySQL invocando al controlador */
+/* ojo! el conectar debe estar en un solo lado*/
+function guardarUsuario ($name,$email,$pass,$avatar){
+$dsn = 'mysql:dbname=MySQL;host=127.0.0.1';
+$UserDB = 'root';
+$PassDB = '';
+
+try {
+    $gbd = new PDO($dsn, $UserDB, $PassDB);
+    // echo "entre en try, me conecte al MySql Local   ";
+} catch (PDOException $e) {
+    echo 'Falló la conexión: ' . $e->getMessage();
+}
+
+/*la columna id se genera sola por eso no esta declarado en insert*/
+/*todas las personas que se resigtran son usuarios por defaul de tipo 1(uno)*/
+$gsent = $gbd->prepare('INSERT INTO proyecto.usuarios(nickname,email,pass,tipoDeUsuario,avatar)
+VALUES(:name,:email,:pass,1,:avatar);');
+ $gsent->bindValue(':name',     $name,   PDO::PARAM_STR);
+ $gsent->bindValue(':email',    $email,  PDO::PARAM_STR);
+ $gsent->bindValue(':pass',     $pass,   PDO::PARAM_STR);
+ $gsent->bindValue(':avatar',   $avatar, PDO::PARAM_STR);
+ var_dump($gsent);
+ $gsent->execute();
+ $results = $gsent->fetchAll(PDO::FETCH_ASSOC);
+
+}
+?>
