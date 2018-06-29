@@ -1,74 +1,31 @@
-<?php
-/* Ojo! la funcion guardarUsuario no tiene que estar dentro de la misma pagina*/
-/* Ojo! sino tiene que estar en la clase que le corresponda*/
 
-session_start();
+<?php
 require_once('funciones.php');
-if (estaLogueado()) {
-    header('location:homepage.php');
+require_once('autoload.php');
+use beers\models\User;
+use beers\models\auth;
+use beers\Repositorio\mysql;
+use beers\models\validate;
+if (auth::verificarLogueo()) {
+    header('Location:homepage.php');
     exit;
 }
-
-$errorName = $errorMail = $errorPass= $mail = $pass = $name = '';
-
-if($_POST) {
-  $name=trim($_POST['name']);
-  $pass=trim($_POST['pass']);
-  $mail=trim($_POST['mail']);
-#creamos los errores y un contador de errores
-   $countError=[];
-   if($name=='') {
-       $errorName='Elige un nombre de usuario';
-       $countError[] = 'error';
-   }
-   if($mail=='') {
-      $errorMail='El mail es obligatorio';
-      $countError[] = 'error';
-   }elseif (verificaMail($mail)) {
-     $errorMail='Ya existe una cuenta con su email';
-   }
-   if($pass==''){
-     $errorPass='La contraseña es obligatoria';
-     $countError[] = 'error';
-   }
-
-   #crea usuario
-   $array=[
-     'name' => $name,
-     'pass' => $pass,
-     'mail' => $mail,
-     'ID' => ID(),
-     "profile" => 'img/' . $mail. '.' . pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION)
-   ];
-
-if (verificaMail($mail) != true && empty($countError)){
-  guardaperfil('avatar');
-  $json=json_encode($array);
-  $archivo='datauser.txt';
-  file_put_contents($archivo, $json. PHP_EOL, FILE_APPEND);
-  header('Location: homepage.php');
-/* insert en base de datos porque los datos estan Ok*/
-/* parte nueva insert en base de datos llamo a la funcion guardarUsuario*/
-/* ojo! datos duplicados ver como se hace esto mejor*/
-$name1=trim($_POST['name']);
-$pass1=trim($_POST['pass']);
-$mail1=trim($_POST['mail']);
-$avatar1= 'img/' . $mail. '.' . pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION);
-/*
-echo "<br><br><br><br>";
-echo "  name-->",$name1;
-echo "  email-->",$mail1;
-echo "  pass-->",$pass1;
-echo "  avatar1-->",$avatar1;
-echo "<br><br><br><br>";
-echo "  post -->";
-var_dump($_POST);*/
-//echo "avatar",$avatar1;
-guardarUsuario ($name1,$mail1,$pass1,$avatar1);
+$user = $email = $pass= '';
+if ($_POST) {
+  $user = trim($_POST['name']);
+  $email = trim($_POST['email']);
+  $pass= trim($_POST['pass']);
+  $errores = new validate($_POST);
+  $errores = $errores->validarRegistro();
+  $usuario = new User($email,$user,$pass,guardaPerfil('avatar'));
+  $repositorio= new mysql();
+if ($errores === []) {
+  $repositorio->guardarUsuario($usuario);
+  Auth::loguearPerfil($usuario);
 }
-
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -83,9 +40,18 @@ guardarUsuario ($name1,$mail1,$pass1,$avatar1);
             <a href="index.php"> <img src="./images/logo.png" alt=""></a>
             <p>¡Unite a la comunidad!</p>
             <form class="form" action="registro2.php" method="POST" enctype="multipart/form-data">
-              <input type="text" name="name" autofocus placeholder="Usuario" value="<?php echo $name; ?>"> <span class="errorstyle"> <?php  echo $errorName; ?></span>
-              <input type="email" name="mail"  placeholder="Email" value="<?php echo $mail; ?>"> <span class="errorstyle"> <?php echo $errorMail; ?></span>
-              <input type="password" name="pass"  placeholder="Contraseña" value="<?php echo $pass; ?>"> <span class="errorstyle"> <?php echo $errorPass; ?></span>
+              <input type="text" name="name" autofocus placeholder="Usuario" value="<?php echo $user; ?>"> <span class="errorstyle"> <?php if (isset($errores['name'])):
+      echo $errores['nombre'];
+    else: echo '';
+    endif; ?></span>
+              <input type="email" name="email"  placeholder="Email" value="<?php echo $email; ?>"> <span class="errorstyle"> <?php if (isset($errores['email'])):
+  echo $errores['email'];
+else: echo '';
+endif; ?></span>
+              <input type="password" name="pass"  placeholder="Contraseña" value="<?php echo $pass; ?>"> <span class="errorstyle"> <?php if (isset($errores['pass'])):
+    echo $errores['pass'];
+  else: echo '';
+  endif; ?></span>
               <label> <p>Foto de perfil</p> <input id="regAvatar" type="file" name="avatar" value=""></label>
 
               <input id="registro" type="submit" name="" value="REGISTRATE">

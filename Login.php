@@ -1,64 +1,32 @@
 <?php
-namespace repositorio;
-
-session_start();
 require_once('funciones.php');
-
-
-
-if (estaLogueado()) {
-    header('location:homepage.php');
-    exit;
-}
-
-$errorUser = $errorPass = $user = $pass = $noValido = '';
-
-if($_POST) {
-   $user=trim($_POST['user']);
-   $pass=trim($_POST['pass']);
-
-  $countError=0;
-  if($user=='') {
-     $errorUser='Debe ingresar su usuario';
-     $countError++;
-   }
-
-  if($pass=='') {
-     $errorPass='Debe ingresar su contraseña';
-     $countError++;
-  }
-   if (($countError)==0 && ($usuario = verificaCredenciales($user,$pass))) {
-     echo "Listo! ";
-     loguear($usuario);
-     if ($_POST['conectado']) {
-           setcookie('id', $usuario['id'], time() + 3600 );
-       }
-
+require_once('autoload.php');
+use beers\models\User;
+use beers\models\auth;
+use beers\Repositorio\mysql;
+use beers\models\validate;
+ /* Verifico que el usuario no este logueado en caso que si lo este
+ lo dirijo a la pagina principal y corto la ejecución del codigo */
+ if (Auth::verificarLogueo()) {
      header('Location:homepage.php');
-      exit;
-  /*   var_dump($usuario);
-     echo '<br>';
-     var_dump($countError);
-     var_dump($_SESSION);
-  */
-} elseif(($countError)==0 && (verificaCredenciales($user,$pass) == false)){
-          $noValido = 'El correo electrónico y la contraseña que ingresaste no coinciden con nuestros registros. Por favor, revisa e inténtalo de nuevo.';
-      }
-}
-/*
-var_dump($user);
-var_dump($pass);
-var_dump($errorUser);
-var_dump($errorPass);
-echo 'count errororo please!';
-var_dump($countError);
-//var_dump($usuario);*/
+     exit;
+ }
+ $email= '';
+ if ($_POST){
+ $validacion= new validate($_POST);
+ $errores = $validacion->validarLogin();
+ $repositorio= new mysql();
+ $email = trim($_POST['user']); //elimina los espacios del nombre de usuario recbida
+   if ($errores === []) {
+ 			$usuario = $repositorio->existeEmail($email);
+ 			if (isset($_POST["recordar"])) {
+ 	        setcookie('id', $usuario['id'], time() + 3600 * 24 * 30);
+ 	      }
+         $usuarioObj = new User($usuario['email'],$usuario['pass'],$usuario['name'],$usuario['foto_perfil']);
+         Auth::loguearInicio($usuarioObj);
+ 		}
+ 	}
  ?>
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en" >
@@ -74,13 +42,15 @@ var_dump($countError);
 
   <div class="login-form">
      <a id="titulo" href="index.php"><h1>Beers</h1></a>
-      <span class="errorstyle"> <?php  echo $errorUser; ?></span>
+      <span class="errorstyle"> <?php if (isset($errores['email'])): ?></span>
+        <?php endif; ?>
      <div class="form-group ">
 
-       <input type="text" name="user" class="form-control" placeholder="Usuario " id="UserName" value="<?php echo $user; ?>">
+       <input type="text" name="user" class="form-control" placeholder="Email " id="UserName" value="<?php echo $email;  ?>">
        <i class="fa fa-user"></i>
      </div>
-      <span class="errorstyle"> <?php echo $errorPass; ?></span>
+      <span class="errorstyle"> <?php if (isset($errores['pass'])): ?></span>
+        <?php endif; ?>
      <div class="form-group log-status">
        <input type="password" name="pass" class="form-control" placeholder="Contraseña" id="Passwod" value="">
        <i class="fa fa-lock"></i>
@@ -90,7 +60,6 @@ var_dump($countError);
       <a class="link" href="#">Olvidaste Tu contraseña?</a>
      <button type="submit" class="log-btn" >Entrar</button>
 
-     <span class="errorstyle"> <?php echo $noValido; ?> </span>
 
    </div>
 
