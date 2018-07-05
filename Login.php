@@ -3,7 +3,7 @@ require_once('funciones.php');
 require_once('autoload.php');
 use beers\models\User;
 use beers\models\auth;
-use beers\Repositorio\mysql;
+use beers\repositorio\mysql;
 use beers\models\validate;
  /* Verifico que el usuario no este logueado en caso que si lo este
  lo dirijo a la pagina principal y corto la ejecución del codigo */
@@ -22,7 +22,7 @@ use beers\models\validate;
  			if (isset($_POST["recordar"])) {
  	        setcookie('id', $usuario['id'], time() + 3600 * 24 * 30);
  	      }
-         $usuarioObj = new User($usuario['email'],$usuario['pass'],$usuario['name'],$usuario['foto_perfil']);
+         $usuarioObj = new User($usuario['email'],$usuario['nickname'],$usuario['pass'],$usuario['avatar']);
          Auth::loguearInicio($usuarioObj);
  		}
  	}
@@ -42,14 +42,14 @@ use beers\models\validate;
 
   <div class="login-form">
      <a id="titulo" href="index.php"><h1>Beers</h1></a>
-      <span class="errorstyle"> <?php if (isset($errores['email'])): ?></span>
+      <span class="errorstyle"> <?php if (isset($errores['email'])): ?><?=$errores['email'];?></span>
         <?php endif; ?>
      <div class="form-group ">
 
        <input type="text" name="user" class="form-control" placeholder="Email " id="UserName" value="<?php echo $email;  ?>">
        <i class="fa fa-user"></i>
      </div>
-      <span class="errorstyle"> <?php if (isset($errores['pass'])): ?></span>
+      <span class="errorstyle"> <?php if (isset($errores['pass'])): ?> <?=$errores['pass'];?></span>
         <?php endif; ?>
      <div class="form-group log-status">
        <input type="password" name="pass" class="form-control" placeholder="Contraseña" id="Passwod" value="">

@@ -8,7 +8,7 @@ $PassDB = '';
 
 try {
     $gbd = new PDO($dsn, $UserDB, $PassDB);
-    echo "entre en try, me conecte al MySql Local   ";
+    echo "En try, conectado a MySQL   ";
 } catch (PDOException $e) {
     echo 'Falló la conexión: ' . $e->getMessage();
 }

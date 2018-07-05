@@ -39,9 +39,9 @@ if ($errores === []) {
         <div class="register">
             <a href="index.php"> <img src="./images/logo.png" alt=""></a>
             <p>¡Unite a la comunidad!</p>
-            <form class="form" action="registro2.php" method="POST" enctype="multipart/form-data">
+            <form class="form" action="" method="POST" enctype="multipart/form-data">
               <input type="text" name="name" autofocus placeholder="Usuario" value="<?php echo $user; ?>"> <span class="errorstyle"> <?php if (isset($errores['name'])):
-      echo $errores['nombre'];
+      echo $errores['name'];
     else: echo '';
     endif; ?></span>
               <input type="email" name="email"  placeholder="Email" value="<?php echo $email; ?>"> <span class="errorstyle"> <?php if (isset($errores['email'])):

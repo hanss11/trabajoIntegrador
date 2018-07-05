@@ -1,18 +1,18 @@
 <?php
-session_start();
-require_once('funciones.php');
-
-if (!estaLogueado()) {
-    header('location:login.php');
-    exit;
+require_once('autoload.php');
+use beers\models\auth;
+use beers\repositorio\mysql;
+if (!Auth::verificarLogueo()){
+   header('Location:login.php');
+   exit;
 }
-/*echo '<br><br><br><br><br><br><br>';
+$repositorio = new mysql;
+$user= $_SESSION['usuario'];
+$nombreDeUsuario = $user;
+$nombreDeProfile = $repositorio->existeUsuario($user);
+$nombreDeProfile= $nombreDeProfile['avatar'];
 
-var_dump($_SESSION);
-
-*/
- ?>
-
+?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -33,9 +33,9 @@ var_dump($_SESSION);
             <img src="./images/newyork.jpg" alt="">
           </div>
           <div class="cardAvatar">
-            <img id="tamaño" src="<?php echo './'. $_SESSION['profile']; ?>" alt="">
+            <img id="tamaño" src="<?php echo $nombreDeProfile; ?>" alt="">
           </div>
-          <span>  <?php echo ucwords($_SESSION['name']); ?> </span>
+          <span>  <?php echo ucwords($nombreDeUsuario); ?> </span>
         </div>
 
         <div class="interactiveProfile">

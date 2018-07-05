@@ -456,7 +456,7 @@ footer ul li a:hover{
 }
 .CenterUser{
   float: left;
-  margin: 1.5% 10%;
+  margin: 1.5% 4%;
   color: #fff;
 }
 .ulNavBar{
@@ -493,7 +493,7 @@ padding: 0;
 .boxsearch{
   float: right;
   margin-top: 8px;
-  margin-left: 8px;
+  margin-left: 4px;
   position: relative;
 }
 .container-1{

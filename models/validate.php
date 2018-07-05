@@ -11,8 +11,8 @@ class Validate
   public function validarLogin(){
     $devolucionDeDatos =[];
     $repositorio= new mysql();
-    //Inicializo las variables con los datos que obtengo del post del login
-    $usuario= trim($this->datosPost['email']);
+
+    $usuario= trim($this->datosPost['user']);
     $pass = trim($this->datosPost['pass']);
     if ($usuario ==''){
           $devolucionDeDatos['email'] = 'Ingrese su Email';
@@ -44,12 +44,12 @@ class Validate
       if ($email == '') {
        $errores['email'] = "Completa tu email";
       } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-       $errores['email'] = "Por favor poner un email de verdad.";
+       $errores['email'] = "Por favor poner un email existente.";
       } elseif ($repositorio->existeEmail($email)) {
        $errores['email'] = "Este email ya existe.";
      }
       if ($pass == '') {
-       $errores['pass'] = "Por favor completa tus contraseña";
+       $errores['pass'] = "Por favor completa tu contraseña";
      }
        return $errores;
       }

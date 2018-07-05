@@ -1,20 +1,22 @@
-<?php
 
-
-
-session_start();
-require_once('funciones.php');
-
-if (!estaLogueado()) {
-    header('location:login.php');
+ <?php
+require_once('autoload.php');
+use beers\models\auth;
+use beers\repositorio\mysql;
+if (!Auth::verificarLogueo()){
+    header('Location:login.php');
     exit;
 }
-/*echo '<br><br><br><br><br><br><br>';
+$repositorio = new mysql;
+$user= $_SESSION['usuario'];
+$nombreDeUsuario = $user;
+$nombreDeProfile = $repositorio->existeUsuario($user);
+$nombreDeProfile= $nombreDeProfile['avatar'];
 
-var_dump($_SESSION);
+?>
 
-*/
- ?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

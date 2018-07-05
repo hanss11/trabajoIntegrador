@@ -3,16 +3,16 @@ namespace beers\repositorio;
 use beers\models\user;
 use PDO;
 class mysql {
-  private $host = 'mysql:host=127.0.0.1;dbname=beers';
+  private $host = 'mysql:host=127.0.0.1;dbname=proyecto';
   private $conex;
   private $dbuser = 'root';
-  private $dbpass = 'root';
+  private $dbpass = '';
   public function __construct() {
     $this->conex = new PDO($this->host, $this->dbuser,  $this->dbpass,
       [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
   }
-  public function guardarUsuario(Usuario $usuario) {
-    $stmt = $this->conex->prepare("INSERT INTO usuarios (nombre, apellido, usuario, email, pass, nacimiento, foto_perfil)
+  public function guardarUsuario(User $usuario) {
+    $stmt = $this->conex->prepare("INSERT INTO usuarios (nickname, email, pass, avatar)
     VALUES (:name,:email,:pass,:avatar)");
     $stmt->bindValue(':name', $usuario->getUsuario());
     $stmt->bindValue(':email', $usuario->getEmail());
@@ -44,8 +44,8 @@ class mysql {
     }
   }
   public function existeUsuario($usuario) {
-    $stmt = $this->conex->prepare("SELECT * FROM usuarios WHERE usuario=:usuario");
-    $stmt->bindValue(':usuario', $usuario);
+    $stmt = $this->conex->prepare("SELECT * FROM usuarios WHERE nickname=:nickname");
+    $stmt->bindValue(':nickname', $usuario);
     $stmt->execute();
     $results = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($results) {

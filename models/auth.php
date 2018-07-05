@@ -2,13 +2,13 @@
 namespace beers\models;
 use beers\models\user;
 abstract class Auth {
-  public function loguearPerfil(Usuario $usuario) {
+  public function loguearPerfil(User $usuario) {
     session_start();
     $_SESSION['usuario'] = $usuario->getUsuario();
-     header('location:perfil.php');
+     header('location:homepage.php');
      exit;
   }
-  public function loguearInicio(Usuario $usuario) {
+  public function loguearInicio(User $usuario) {
     session_start();
     $_SESSION['usuario'] = $usuario->getUsuario();
      header('location:homepage.php');

@@ -7,7 +7,7 @@ session_start();
     <div class="colorNav">
       <div class="navContain">
           <div class="ProfilePhoto">
-            <img src="<?php echo './'. $_SESSION['profile']; ?>" alt="">
+            <img src="<?php echo './'. $nombreDeProfile; ?>" alt="">
           </div>
 
           <div class="dropdown">
@@ -34,7 +34,7 @@ session_start();
           </div>
 
           <div class="CenterUser">
-            <a href="perfil.php"><span> <?php echo ucwords($_SESSION['name']); ?> </span></a>
+            <a href="perfil.php"><span> <?php echo ucwords($nombreDeUsuario); ?> </span></a>
 
           </div>
 
